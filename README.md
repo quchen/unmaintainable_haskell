@@ -52,11 +52,12 @@ Note that you have to use loop somewhere so it's not optimized away. A good way 
     -- 2*3 = ?
 ```
 
-15. ```haskell
+15. That'll teach them to use `succ`.
+```haskell
     import Prelude hiding ((+))
     import qualified Prelude
-    a + b = a +. b +. c
-          where (+.) = (Prelude.+)
-                c | b `rem` 13 == 0 = signum b
-                  | otherwise       = 0
+    a + b = a +. b'
+        where (+.) = (Prelude.+)
+              b' | b == 1    = b +. 1
+                 | otherwise = b     = 0
 ```
