@@ -36,7 +36,7 @@ A decent amount of the classic [*How to write unmaintainable code*](http://thc.o
 
 10. Never import a module qualified under the same name twice. Combines well with the previous point.
 
-11. Import the same module multiple times, qualified under different names.
+11. Import the same module multiple times, qualified under different (suggestive) names.
 
 12. Boilerplate code should be avoided; GHC will complain when it requires explicit type annotations.
 
@@ -72,3 +72,5 @@ Use `False` from now on and see what happens when the maintainer changes:
 ```haskell
     otherwise = True
 ```
+
+17. Make all functions pointfree. If you can't do it yourself, ask Lambdabot.
