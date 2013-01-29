@@ -32,7 +32,7 @@
 
 9. Haskell's expressiveness allows coding in a very concise style. For example it renders comments redundant and makes you able to call all your types `T` and typeclasses `C` and them import them qualified.
 
-10. Never import a qualified module under the same name twice. Combines well with the previous point.
+10. Never import a module qualified under the same name twice. Combines well with the previous point.
 
 11. Boilerplate code should be avoided; GHC will complain when it requires explicit type annotations.
 
