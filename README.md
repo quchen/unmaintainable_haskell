@@ -1,4 +1,4 @@
-How to write unmaintainable Haskell code
+# How to write unmaintainable Haskell code
 
 1. Use rewrite rule pragmas to alter functions. The compiler doesn't check whether the rewrite rule makes sense at all, so feel free to sprinkle your code with silly rewrites.
 ```haskell
