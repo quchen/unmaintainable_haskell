@@ -54,14 +54,19 @@ Note that you have to use loop somewhere so it's not optimized away. A good way 
     -- 2*3 = ?
 ```
 
-15. Redefine Prelude elements.
+15. Redefine Prelude elements. The following one will teach proper use of `succ` in the future.
 ```haskell
     a + b = a +. b'
         where (+.) = (Prelude.+)
               b' | b == 1    = b +. 1
                  | otherwise = b
 ```
+... unless ...
+```haskell
+    succ x = Prelude.succ . Prelude.succ $ x
+    -- Eta reduction needs -XMonomorphismRestriction :-(
+```
+Use `False` from now on and see what happens when the maintainer changes:
 ```haskell
     otherwise = True
-    -- ... and use explicit "False"
 ```
