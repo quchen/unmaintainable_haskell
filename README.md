@@ -52,8 +52,7 @@ Note that you have to use loop somewhere so it's not optimized away. A good way 
     -- 2*3 = ?
 ```
 
-15.
-```haskell
+15. ```haskell
     import Prelude hiding ((+))
     import qualified Prelude
     a + b = a +. b +. c
