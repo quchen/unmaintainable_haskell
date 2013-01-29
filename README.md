@@ -59,5 +59,5 @@ Note that you have to use loop somewhere so it's not optimized away. A good way 
     a + b = a +. b'
         where (+.) = (Prelude.+)
               b' | b == 1    = b +. 1
-                 | otherwise = b     = 0
+                 | otherwise = b
 ```
