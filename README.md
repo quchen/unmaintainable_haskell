@@ -57,5 +57,6 @@ Note that you have to use loop somewhere so it's not optimized away. A good way 
     import qualified Prelude
     a + b = a +. b +. c
           where (+.) = (Prelude.+)
-                c = signum $ b `rem` 13
+                c | b `rem` 13 == 0 = signum b
+                  | otherwise       = 0
 ```
