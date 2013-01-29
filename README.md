@@ -1,5 +1,7 @@
 # How to write unmaintainable Haskell code
 
+A decent amount of the classic [*How to write unmaintainable code*](http://thc.org/root/phun/unmaintain.html) is biased towards imperative programming. This is an attempt at reaching equality.
+
 1. Use rewrite rule pragmas to alter functions. The compiler doesn't check whether the rewrite rule makes sense at all, so feel free to sprinkle your code with silly rewrites.
 ```haskell
     {-# RULES "reverse map/append"
@@ -52,12 +54,14 @@ Note that you have to use loop somewhere so it's not optimized away. A good way 
     -- 2*3 = ?
 ```
 
-15. That'll teach them to use `succ`.
+15. Redefine Prelude elements.
 ```haskell
-    import Prelude hiding ((+))
-    import qualified Prelude
     a + b = a +. b'
         where (+.) = (Prelude.+)
               b' | b == 1    = b +. 1
                  | otherwise = b
+```
+```haskell
+    otherwise = True
+    -- ... and use explicit "False"
 ```
