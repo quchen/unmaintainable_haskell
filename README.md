@@ -2,19 +2,19 @@
 
 1. Use rewrite rule pragmas to alter functions. The compiler doesn't check whether the rewrite rule makes sense at all, so feel free to sprinkle your code with silly rewrites.
 ```haskell
-{-# RULES "reverse map/append"
-    forall f xs ys. map f (xs ++ ys) = map f ys ++ map f xs #-}
+    {-# RULES "reverse map/append"
+        forall f xs ys. map f (xs ++ ys) = map f ys ++ map f xs #-}
 ```
 
 2. The IO monad is your friend! Take the restrictivity of Haskell away, when you're done use QuickCheck to show  it's referentially transparent and wrap it in unsafePerformIO.
 ```haskell
-len xs = unsafePerformIO $ do
-    count <- newIORef 0
-    let getLength ys = case ys of
-        []      -> return ()
-        (y:ys') -> modifyIORef' count (+1) >> getLength ys'
-    getLength xs
-    readIORef' count
+    len xs = unsafePerformIO $ do
+        count <- newIORef 0
+        let getLength ys = case ys of
+            []      -> return ()
+            (y:ys') -> modifyIORef' count (+1) >> getLength ys'
+        getLength xs
+        readIORef' count
 ```
 (Make sure to use `modifyIORef'` or your code may be unsafe.)
 
@@ -38,8 +38,8 @@ len xs = unsafePerformIO $ do
 
 12. If you want your program to be run just as you've written it, disable compiler optimization rewrites. The nicer way of doing this is by using the `-fno-enable-rewrite-rules` flag when compiling, however it is more effective to define a rule that makes GHC go into an infinite loop when compiling, forcing the compilation to be done like this.
 ```haskell
-loop a b = ()
-{-# RULES "loop" forall x y. loop x y = loop y x #-}
+    loop a b = ()
+    {-# RULES "loop" forall x y. loop x y = loop y x #-}
 ```
 Note that you have to use loop somewhere so it's not optimized away. A good way is having `return $ loop 1 2` as the last function in main.
 
