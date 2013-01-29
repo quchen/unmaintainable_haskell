@@ -28,7 +28,7 @@ len xs = unsafePerformIO $ do
 
 7. QuickCheck is a statistical test that generates false sense of security, and should be avoided for that reason.
 
-8. All laws in Haskell are meant to be broken. Got a monad, but `m >>= return` just won't be `m` again? A "`-- hack, careful`" should be sufficient documentation.
+8. All laws in Haskell are meant to be broken. Got a monad, but `m >>= return` just won't be `m` again? A `-- hack, careful` should be sufficient documentation.
 
 9. Haskell's expressiveness allows coding in a very concise style. For example it renders comments redundant and makes you able to call all your types `T` and typeclasses `C` and them import them qualified.
 
@@ -36,7 +36,7 @@ len xs = unsafePerformIO $ do
 
 11. Boilerplate code should be avoided; GHC will complain when it requires explicit type annotations.
 
-12. If you want your program to be run just as you've written it, disable compiler optimization rewrites. The nicer way of doing this is by using the '-fno-enable-rewrite-rules' flag when compiling, however it is more effective to define a rule that makes GHC go into an infinite loop when compiling, forcing the compilation to be done like this.
+12. If you want your program to be run just as you've written it, disable compiler optimization rewrites. The nicer way of doing this is by using the `-fno-enable-rewrite-rules` flag when compiling, however it is more effective to define a rule that makes GHC go into an infinite loop when compiling, forcing the compilation to be done like this.
 ```haskell
 loop a b = ()
 {-# RULES "loop" forall x y. loop x y = loop y x #-}
