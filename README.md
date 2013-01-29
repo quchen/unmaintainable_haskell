@@ -36,25 +36,27 @@ A decent amount of the classic [*How to write unmaintainable code*](http://thc.o
 
 10. Never import a module qualified under the same name twice. Combines well with the previous point.
 
-11. Boilerplate code should be avoided; GHC will complain when it requires explicit type annotations.
+11. Import the same module multiple times, qualified under different names.
 
-12. If you want your program to be run just as you've written it, disable compiler optimization rewrites. The nicer way of doing this is by using the `-fno-enable-rewrite-rules` flag when compiling, however it is more effective to define a rule that makes GHC go into an infinite loop when compiling, forcing the compilation to be done like this.
+12. Boilerplate code should be avoided; GHC will complain when it requires explicit type annotations.
+
+13. If you want your program to be run just as you've written it, disable compiler optimization rewrites. The nicer way of doing this is by using the `-fno-enable-rewrite-rules` flag when compiling, however it is more effective to define a rule that makes GHC go into an infinite loop when compiling, forcing the compilation to be done like this.
 ```haskell
     loop a b = ()
     {-# RULES "loop" forall x y. loop x y = loop y x #-}
 ```
 Note that you have to use loop somewhere so it's not optimized away. A good way is having `return $ loop 1 2` as the last function in main.
 
-13. Naming conventions can help making code more readable. For example in `(xs:x)`, `xs` stands for "x singular", and `x` contains the rest of the x.
+14. Naming conventions can help making code more readable. For example in `(xs:x)`, `xs` stands for "x singular", and `x` contains the rest of the x.
 
-14. Use built-in functions as identifiers. Make sure to mention the name in the docs multiple times. Then create a base case that doesn't work for that operator.
+15. Use built-in functions as identifiers. Make sure to mention the name in the docs multiple times. Then create a base case that doesn't work for that operator.
 ```haskell
     times 0  _  _ = 1
-    times n (+) x = x + power (n-1) (+) x
+    times n (+) x = x + times (n-1) (+) x
     -- 2*3 = ?
 ```
 
-15. Redefine Prelude elements. The following one will teach proper use of `succ` in the future.
+16. Redefine Prelude elements. The following one will teach proper use of `succ` in the future.
 ```haskell
     a + b = a +. b'
         where (+.) = (Prelude.+)
