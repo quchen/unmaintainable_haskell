@@ -16,7 +16,7 @@ A decent amount of the classic [*How to write unmaintainable code*](http://thc.o
             []      -> return ()
             (y:ys') -> modifyIORef' count (+1) >> getLength ys'
         getLength xs
-        readIORef' count
+        readIORef count
 ```
 (Make sure to use `modifyIORef'` or your code may be unsafe.)
 
@@ -47,7 +47,7 @@ A decent amount of the classic [*How to write unmaintainable code*](http://thc.o
 ```
 Note that you have to use loop somewhere so it's not optimized away. A good way is having `return $ loop 1 2` as the last function in main.
 
-14. Naming conventions can help making code more readable. For example in `(xs:x)`, `xs` stands for "x singular", and `x` contains the rest of the x.
+14. Naming conventions can help making code more readable. For example in `(xs:x)`, `xs` stands for "x singular", and `x` contains the rest.
 
 15. Use built-in functions as identifiers. Make sure to mention the name in the docs multiple times. Then create a base case that doesn't work for that operator.
 ```haskell
@@ -83,7 +83,6 @@ type ℝ = Double
 ```
 Prettyprint special values:
 ```haskell
-infixl 0 ∞
 (∞) = 1/0
 ```
 Use creative symbolism:
