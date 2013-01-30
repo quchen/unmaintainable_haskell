@@ -87,13 +87,13 @@ infixl 0 ∞
 (∞) = 1/0
 ```
 Use creative symbolism:
-```haskell
+```text
 a ☃ b = a + b
 (☠) = undefined
 a ≸ b = True
 a ‽ b = a `seq` (a, b)
 ```
 And last the really golden part about Unicode: characters that look alike, for example none of the following is in ASCII: аеорсух АВЕКМНОРСТУХ.
-```haskell
+```text
 let map mар maр = mар : map mар maр; mаp mар = map mар mар in mаp "map"
 ```
