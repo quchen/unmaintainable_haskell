@@ -88,7 +88,7 @@ infixl 0 ∞
 ```
 Use creative symbolism:
 ```text
-a ☃ b = a + b
+(☃) = show
 (☠) = undefined
 a ≸ b = True
 a ‽ b = a `seq` (a, b)
