@@ -74,3 +74,26 @@ Use `False` from now on and see what happens when the maintainer changes:
 ```
 
 17. Make all functions pointfree. If you can't do it yourself, ask Lambdabot.
+
+18. Unicode is your friend!
+Make mathematicians cry:
+```haskell
+type ℕ = Integer
+type ℝ = Double
+```
+Prettyprint special values:
+```haskell
+infixl 0 ∞
+(∞) = 1/0
+```
+Use creative symbolism:
+```haskell
+a ☃ b = a + b
+(☠) = undefined
+a ≸ b = True
+a ‽ b = a `seq` (a, b)
+```
+And last the really golden part about Unicode: characters that look alike, for example none of the following is in ASCII: аеорсух АВЕКМНОРСТУХ.
+```haskell
+let map mар maр = mар : map mар maр; mаp mар = map mар mар in mаp "map"
+```
