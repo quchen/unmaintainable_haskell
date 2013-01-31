@@ -68,9 +68,9 @@ Note that you have to use loop somewhere so it's not optimized away. A good way 
     succ x = Prelude.succ . Prelude.succ $ x
     -- Eta reduction needs -XMonomorphismRestriction :-(
 ```
-Use `False` from now on and see what happens when the maintainer changes:
+Use `False` explicitly from now on and see what happens when the maintainer changes:
 ```haskell
-    otherwise = True
+    otherwise = False
 ```
 
 17. Make all functions pointfree. If you can't do it yourself, ask Lambdabot.
