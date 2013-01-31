@@ -96,3 +96,10 @@ And last the really golden part about Unicode: characters that look alike, for e
 ```text
 let map mар maр = mар : map mар maр; mаp mар = map mар mар in mаp "map"
 ```
+
+19. `LANGUAGE` pragmas alter the language, so they are not and should not be part of the source code. If you need language extensions, specify them in your `.cabal` or `makefile`.
+
+20. Use `BangPatterns` syntax without importing the language extension.
+```haskell
+    f !x = f x
+```
