@@ -68,7 +68,7 @@ Note that you have to use loop somewhere so it's not optimized away. A good way 
     succ x = Prelude.succ . Prelude.succ $ x
     -- Eta reduction needs -XMonomorphismRestriction :-(
 ```
-Use `False` explicitly from now on and see what happens when the maintainer changes:
+Another thing worth noting is that `otherwise` is not a language feature, but simply defined to be `True` in `Data.Bool`.
 ```haskell
     otherwise = False
 ```
